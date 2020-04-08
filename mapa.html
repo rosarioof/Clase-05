@@ -63,7 +63,7 @@
                         semaforo = '#fbc02d'; //amarillo en caso los confirmados estén entre 0.1% y 0.01% de la población
                     }
                     else { 
-                        semaforo = '#388e3c'; //verde para los demás casos
+                        semaforo = '#388e3c'; //verde para los demás
                     }                   
 
                 L.circle([latitud,longitud],{radius:100000,fillColor:semaforo,fillOpacity:0.9,color:'#666666',weight:1}).addTo(miMapa).bindPopup("<strong>" + data[x].pais + "</strong><br />" + data[x].casos  + " casos confirmados" + "<br />" + data[x].habitantes  + " millones de habitantes"); //todas los círculos tienen el mismo tamaño; que se vean distintos les muestra la "deformación" del mismo mapamundi
