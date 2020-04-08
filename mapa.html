@@ -10,7 +10,7 @@
     <style>
         html, body {margin: 0; padding: 0; overflow: hidden;}
         body{font-family:Helvetica, Arial, sans-serif;}
-        select {position: absolute; right: 1%; top: 2%; z-index:99999;}       
+        select {position: absolute; right: 1%; top: 2%; z-index:99999;}
         canvas {display: block;}
     </style>
     <title>DNO037</title>
@@ -27,8 +27,8 @@
     <div id="mapamundi" style="width: 100vw; height: 100vh;"></div>
 
     <script>
-        var url = "https://raw.githubusercontent.com/profesorfaco/dno037-2020/gh-pages/clase-05/datos.json"; //esto debe cambiarse
-        
+        var url = "https://raw.githubusercontent.com/rosarioof/Clase-05/gh-pages/datos.json"; //esto debe cambiarse - LISTO!
+
         var data;
 
         function preload() {
@@ -45,26 +45,26 @@
             }).addTo(miMapa);
 
             for (let x = 0; x < 50; x++) {
-                
+
                 let latitud = data[x].coordenadas[0];
-                
+
                 let longitud = data[x].coordenadas[1];
-                
+
                 let porcentaje = (data[x].casos*100)/(data[x].habitantes*1000000); // porcentaje de afectados en el país
-                
+
                 porcentaje = Math.round((porcentaje + Number.EPSILON) * 100000) / 100000; //redondeo el porcentaje a cinco decimales
-                
+
                 let semaforo; //creo una variable a la que se le asignará un valor dependiendo del caso
 
-                    if(porcentaje >= 0.1){ 
+                    if(porcentaje >= 0.1){
                         semaforo = '#d32f2f'; //rojo en caso porcentaje de confirmados sean igual o mayor a 0.1
                     }
-                    else if(porcentaje < 0.1 && porcentaje > 0.01) { 
+                    else if(porcentaje < 0.1 && porcentaje > 0.01) {
                         semaforo = '#fbc02d'; //amarillo en caso los confirmados estén entre 0.1% y 0.01% de la población
                     }
-                    else { 
-                        semaforo = '#388e3c'; //verde para los demás
-                    }                   
+                    else {
+                        semaforo = '#388e3c'; //verde para los demás casos
+                    }
 
                 L.circle([latitud,longitud],{radius:100000,fillColor:semaforo,fillOpacity:0.9,color:'#666666',weight:1}).addTo(miMapa).bindPopup("<strong>" + data[x].pais + "</strong><br />" + data[x].casos  + " casos confirmados" + "<br />" + data[x].habitantes  + " millones de habitantes"); //todas los círculos tienen el mismo tamaño; que se vean distintos les muestra la "deformación" del mismo mapamundi
 
