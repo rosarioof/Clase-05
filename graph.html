@@ -13,18 +13,18 @@
             padding: 0;
             overflow: hidden;
         }
-        
+
         body {
             font-family: Helvetica, Arial, sans-serif;
         }
-        
+
         select {
             position: absolute;
             right: 1%;
             top: 2%;
             z-index: 99999;
         }
-        
+
         canvas {
             display: block;
         }
@@ -42,11 +42,11 @@
 
     <script>
         var url = "https://pomber.github.io/covid19/timeseries.json";
-        var casos, italia, austria, eslovenia, francia, suiza;
+        var casos, italia, mexico, eeuu, francia, suiza;
         var marzo = [];
         var marzo_italia = [];
-        var marzo_austria = [];
-        var marzo_eslovenia = [];
+        var marzo_mexico = [];
+        var marzo_eeuu = [];
         var marzo_francia = [];
         var marzo_suiza = [];
 
@@ -62,38 +62,38 @@
             }
 
             italia = casos.Italy;
-            austria = casos.Austria;
-            eslovenia = casos.Slovenia;
+            mexico = casos.Mexico;
+            eeuu = casos.US;
             francia = casos.France;
             suiza = casos.Switzerland;
 
             for (let x = 0; x < italia.length; x++) {
                 if (italia[x].date.includes("-3-")) {
-                    marzo_italia.push(italia[x].confirmed);
+                    marzo_italia.push(italia[x].recovered);
                 }
             }
 
-            for (let x = 0; x < austria.length; x++) {
-                if (austria[x].date.includes("-3-")) {
-                    marzo_austria.push(austria[x].confirmed);
+            for (let x = 0; x < mexico.length; x++) {
+                if (mexico[x].date.includes("-3-")) {
+                    marzo_mexico.push(mexico[x].recovered);
                 }
             }
 
-            for (let x = 0; x < eslovenia.length; x++) {
-                if (eslovenia[x].date.includes("-3-")) {
-                    marzo_eslovenia.push(eslovenia[x].confirmed);
+            for (let x = 0; x < eeuu.length; x++) {
+                if (eeuu[x].date.includes("-3-")) {
+                    marzo_eeuu.push(eeuu[x].recovered);
                 }
             }
 
             for (let x = 0; x < francia.length; x++) {
                 if (francia[x].date.includes("-3-")) {
-                    marzo_francia.push(francia[x].confirmed);
+                    marzo_francia.push(francia[x].recovered);
                 }
             }
 
             for (let x = 0; x < suiza.length; x++) {
                 if (suiza[x].date.includes("-3-")) {
-                    marzo_suiza.push(suiza[x].confirmed);
+                    marzo_suiza.push(suiza[x].recovered);
                 }
             }
 
@@ -102,41 +102,41 @@
                 data: {
                     labels: marzo,
                     datasets: [{
-                        label: 'Austria',
-                        backgroundColor: 'rgba(152,78,163,.1)',
-                        borderColor: 'rgb(152,78,163)',
+                        label: 'Mexico',
+                        backgroundColor: 'rgba(252,197,192,.1)',
+                        borderColor: 'rgb(252,197,192)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
-                        data: marzo_austria
+                        data: marzo_mexico
                     }, {
-                        label: 'Eslovenia',
-                        backgroundColor: 'rgba(77,175,74,.1)',
-                        borderColor: 'rgb(77,175,74)',
+                        label: 'EEUU',
+                        backgroundColor: 'rgba(250,159,181,.1)',
+                        borderColor: 'rgb(250,159,181)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
-                        data: marzo_eslovenia
+                        data: marzo_eeuu
                     }, {
                         label: 'Francia',
-                        backgroundColor: 'rgba(55,126,184,.1)',
-                        borderColor: 'rgb(55,126,184)',
+                        backgroundColor: 'rgba(247,104,161,.1)',
+                        borderColor: 'rgb(247,104,161)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
                         data: marzo_francia
                     }, {
                         label: 'Italia',
-                        backgroundColor: 'rgba(228,26,28,.1)',
-                        borderColor: 'rgb(228,26,28)',
+                        backgroundColor: 'rgba(197,27,138,.1)',
+                        borderColor: 'rgb(197,27,138)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
                         data: marzo_italia
                     }, {
                         label: 'Suiza',
-                        backgroundColor: 'rgba(255,127,0,.1)',
-                        borderColor: 'rgb(255,127,0)',
+                        backgroundColor: 'rgba(122,1,119,.1)',
+                        borderColor: 'rgb(122,1,119)',
                         borderWidth: 2,
                         pointRadius: 2,
                         lineTension: 0,
@@ -147,7 +147,7 @@
                     responsive: true,
                     title: {
                         display: true,
-                        text: 'Casos confirmados de coronavirus durante marzo 2020'
+                        text: 'Casos recuperados de coronavirus durante marzo 2020'
                     },
                     scales: {
                         yAxes: [{
@@ -160,7 +160,7 @@
                     }
                 }
             }); //acá se cierra el new Chart de chart.js
-        } 
+        } //acá se cierra el function setup de p5.js
     </script>
 </body>
 
